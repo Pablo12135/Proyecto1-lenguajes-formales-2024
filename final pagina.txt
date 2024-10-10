@@ -1,0 +1,197 @@
+>>[css]
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #007bff 3px solid;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        nav {
+            float: right;
+            margin-top: 10px;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-left: 5px;
+        }
+
+        nav ul li a {
+            padding: 5px 20px;
+            background: #007bff;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background: #0056b3;
+        }
+
+        #showcase {
+            background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+            min-height: 400px;
+            color: #fff;
+            text-align: center;
+        }
+
+        #showcase h1 {
+            margin-top: 100px;
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        #showcase p {
+            font-size: 20px;
+        }
+
+        section#main-content {
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            margin: auto;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .form-container button:hover {
+            background: #0056b3;
+        }
+
+        #hidden-section {
+            display: none;
+            background-color: #e9e9e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        } 
+
+
+>>[js]
+function showSection(sectionId) {
+            const sections = document.querySelectorAll('#main-content > div');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById('contactForm');
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                document.getElementById('hidden-section').style.display = 'block';
+                const data = {
+                    name: event.target[0].value,
+                    email: event.target[1].value,
+                    message: event.target[2].value
+                };
+                console.log(data);
+            });
+        });
+
+>>[html]
+<encabezado>
+    <titulo1>Mi Pagina de Ejemplo<titulo1/>
+    <navegacion>
+        <listaordenada>
+            <itemlista><anclaje href="#" onclick="showSection('home')">Inicio<anclaje/><itemlista/>
+            <itemlista><anclaje href="#" onclick="showSection('about')">Sobre Nosotros<anclaje/><itemlista/>
+            <itemlista><anclaje href="#" onclick="showSection('contact')">Contacto<anclaje/><itemlista/>
+        <listaordenada/>
+    <navegacion/>
+<encabezado/>
+
+<seccion id="showcase">
+    <titulo1>Bienvenido a Mi Pagina<titulo1/>
+    <parrafo>Explora nuestro contenido y conoce mas sobre nosotros.<parrafo>
+<seccion/>
+
+<seccion id="main-content" class="container">
+    <contenedor id="home">
+        <titulo2>Inicio<titulo2/>
+        <parrafo>Este es el contenido de la pagina de inicio.<parrafo/>
+    <contenedor/>
+    <contenedor id="about" style="display: none;">
+        <titulo2>Sobre Nosotros<titulo2/>
+        <parrafo>Somos una empresa comprometida con la excelencia y la innovaciÃƒÂ³n.<parrafo/>
+    <contenedor/>
+    <contenedor id="contact" style="display: none;">
+        <titulo2>Contacto<titulo2/>
+        <contenedor class="form-container">
+            <formulario id="contactForm">
+                <entrada/ type="text" placeholder="Nombre" required value="Yefer Alvarado">
+                <entrada/ type="email" placeholder="Correo Electronico" required value="yeferalvarado@correo.com">
+                <area placeholder="Mensaje" required>Este es el mensaje<area/>
+                <boton type="submit">Enviar<boton/>
+            <formulario/>
+            <contenedor id="hidden-section">
+                <titulo3>Gracias por tu mensaje!<titulo3/>
+                <parrafo>Nos pondremos en contacto contigo pronto.<parrafo/>
+            <contenedor/>
+        <contenedor/>
+    <contenedor/>
+<seccion/>
+
+<piepagina>
+    <parrafo>Mi Pagina de Ejemplo 2024<parrafo/>
+<piepagina/>
